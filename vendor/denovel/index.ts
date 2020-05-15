@@ -1,3 +1,3 @@
 export interface UserInterface {
-    getUser(name: string): string;
+    getUser(name: string | number): string;
 }
