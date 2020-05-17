@@ -10,6 +10,7 @@ import { PORT } from  "../config/app.ts";
  
 export async function __server__(): Promise<void>{
 
+    console.log(`Listening on port ${PORT.args || PORT.env || PORT.default} ...`)
     await app.listen({ port: PORT.args || PORT.env || PORT.default }) 
 
 }
