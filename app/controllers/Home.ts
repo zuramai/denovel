@@ -1,4 +1,6 @@
 import Controller from './Controller.ts';
+import { database } from '../../vendor/package/denovel/_database.ts';
+import * as dejs from 'https://deno.land/x/dejs@0.6.0/mod.ts';
 
 export class Home extends Controller {
 
@@ -8,8 +10,11 @@ export class Home extends Controller {
      * @return {any || void} abstract of index function
      */
 
-    index(){
-        return 'index';
+    async index(ctx: any){
+        const denovel = database.collection("denovel");
+        const datas = await denovel.find({ example: { $ne: null } });
+        const output = await dejs.renderFileToString(`${Deno.cwd()}/resources/views/index.ejs`, { datas });
+        ctx.response.body = output;
     }
 
     /**
@@ -18,8 +23,11 @@ export class Home extends Controller {
      * @return {any || void} abstract of get function
      */
 
-    get(ctx: any){
-
+    async get(ctx: any){
+        const denovel = database.collection("denovel");
+        const datas = await denovel.find({ example: { $ne: null } });
+        const output = await dejs.renderFileToString(`${Deno.cwd()}/resources/views/index.ejs`, { datas });       
+        ctx.response.body = output;
     }  
 
     /**
@@ -28,10 +36,27 @@ export class Home extends Controller {
      * @return {any || void} abstract of post function
      */
 
-    post(ctx: any){
-        const value = ctx.body.value.get("eoe");
-        ctx.response.body = "Hasil :" + value;
-        ctx.response.status = 200;
+    async post(ctx: any){
+        const value = ctx.body.value.get("example");
+        const denovel = database.collection("denovel");
+        const data = await denovel.insertOne({
+          example: value
+        });
+        console.log('Data added successfully');
+
+        const datas = await denovel.find({ example: { $ne: null } });
+        const output = await dejs.renderFileToString(`${Deno.cwd()}/resources/views/index.ejs`, { datas });
+        ctx.response.body = output;
+    }  
+
+    /**
+     * Edit the input of edit function
+     * @param {any || void}
+     * @return {any || void} abstract of edit function
+     */
+
+    async edit(ctx: any){
+
     }  
 
     /**
@@ -40,7 +65,7 @@ export class Home extends Controller {
      * @return {any || void} abstract of put function
      */
 
-    put(ctx: any){
+    async put(ctx: any){
 
     }  
 
@@ -50,7 +75,7 @@ export class Home extends Controller {
      * @return {any || void} abstract of delete function
      */
 
-    delete(ctx: any){
+    async delete(ctx: any){
 
     }  
 }

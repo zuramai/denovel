@@ -16,7 +16,7 @@ const router = new Router();
 /**
  * Get the response time of the application
  * 
- * @return {Promise<void>} abstract of index function
+ * @return {Promise<void>} 
  */
 
 app.use(async (ctx, next): Promise<void> => {
@@ -28,7 +28,7 @@ app.use(async (ctx, next): Promise<void> => {
 /**
  * Set the response time of the application
  * 
- * @return {Promise<void>} abstract of index function
+ * @return {Promise<void>} 
  */
 
 app.use(async (ctx, next): Promise<void> => {
@@ -109,17 +109,6 @@ app.use(router.allowedMethods());
 
 app.use((ctx) => {
   ctx.throw(404);
-});
-
-app.use(async (ctx) => {
-  const result = await ctx.request.body({
-    contentTypes: {
-      text: ["application/javascript"],
-      form: ["urlencoded"],
-    },
-  });
-  result.type; // "text"
-  result.value; // a string containing the text
 });
 
 export default app;

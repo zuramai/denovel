@@ -1,0 +1,35 @@
+        <%- await include("resources/views/partials/header.ejs") %>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header">Todo List</div>
+                <div class="card-body">
+                    <a href="/example" class='btn btn-primary float-right mb-2'>Add</a>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Task</th>
+                                    <th>Time</th>
+                                    <th>Action</th>
+                                </tr>
+                                <% datas.forEach(function(data, i){ %>
+                                <tr>
+                                    <td><%= data.example %></td>
+                                    <td >
+                                        <div class='d-inline-flex'>
+                                            <a href="example/<%= data._id['$oid'] %>" class='btn btn-warning mr-2'>Edit</a>
+                                            <form action="example/<%= data._id['$oid'] %>" method="post">
+                                                <button type="submit" class='btn btn-danger'>Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- await include("resources/views/partials/header.ejs") %>

@@ -1,17 +1,43 @@
 import * as Controller from "../app/ControllerMap.ts";
 
+let HomeController = new Controller.Home();
+
 const router = [
     {
         url: '/',
-        path: new Controller.Home().index(),
         method: 'get',
-        html: true,
+        html: false,
+        return: HomeController.index,
     },
     {
-        url: '/',
+        url: '/example',
+        method: 'get',
+        html: false,
+        return: HomeController.get,
+    },
+    {
+        url: '/example',
         method: 'post',
         html: false,
-        return: (ctx: any) => new Controller.Home().post(ctx),
+        return: HomeController.post,
+    },
+    {
+        url: '/example/:id',
+        method: 'get',
+        html: false,
+        return: HomeController.get,
+    },
+    {
+        url: '/example/:id',
+        method: 'put',
+        html: false,
+        return: HomeController.put,
+    },
+    {
+        url: '/example/:id',
+        method: 'delete',
+        html: false,
+        return: HomeController.delete,
     }
 ];
 

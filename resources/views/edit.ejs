@@ -1,0 +1,16 @@
+<%- await include('resources/resources/views/partials/header.ejs") %>
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">Example</div>
+        <div class="card-body">
+            <form action="/example/<%= data._id['$oid'] %>" method="post">
+                <div class="form-group">
+                    <label for="">Example</label>
+                    <input type="text" name="example" id="" class='form-control' value="<%= data.example %>">
+                </div>
+                <button type="submit" class='btn btn-primary float-right mb-2'>Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<%- await include('resources/resources/views/partials/footer.ejs") %>
