@@ -21,12 +21,17 @@ git clone https://github.com/fauzan121002/denovel.git
 cd denovel
 ```
 
-2. **Open ```.env``` then changes by your database information**
+2. **Open ```.env``` then changes by your database information (Only supports mongo yet.)**
 ```
-DB_PORT=3306
-DB_DATABASE=<YOUR DATABASE NAME>
-DB_USERNAME=<YOUR DATABASE USERNAME>
-DB_PASSWORD=<YOUR DATABASE PASSWORD>
+PORT=8000
+BASE_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=mongodb://localhost
+DB_NAME=denovel
+DB_USER=
+DB_PASS=
+DB_PORT=27017
 ```
 
 3.** Run Server **
