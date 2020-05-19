@@ -15,7 +15,7 @@ git clone https://github.com/fauzan121002/denovel.git
 cd denovel
 ```
 
-2. **Open ```.env``` then changes by your database information (Only supports mongo yet.)**
+2. **Open ```.env``` then changes by your database information (Only supports mongo yet)**
 ```
 PORT=8000
 BASE_URL=http://localhost:8000
