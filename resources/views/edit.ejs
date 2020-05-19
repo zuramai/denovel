@@ -1,16 +1,21 @@
-<%- await include('resources/resources/views/partials/header.ejs") %>
-<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">Example</div>
-        <div class="card-body">
-            <form action="/example/<%= data._id['$oid'] %>" method="post">
-                <div class="form-group">
-                    <label for="">Example</label>
-                    <input type="text" name="example" id="" class='form-control' value="<%= data.example %>">
+<%- await include("resources/views/layouts/header.ejs") %>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Form Edit Test
                 </div>
-                <button type="submit" class='btn btn-primary float-right mb-2'>Submit</button>
-            </form>
+                <div class="card-body">
+                    <form action="/example/update/<%= datas._id['$oid'] %>" method="POST">
+                        <input class="form-control" type="text" name="example" value="<%= datas.example %>">
+                        <button class="btn btn-sm btn-primary mt-3 float-right" type="submit">Update</button>
+                    </form>                    
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<%- await include('resources/resources/views/partials/footer.ejs") %>
+
+<%- await include("resources/views/layouts/footer.ejs") %>

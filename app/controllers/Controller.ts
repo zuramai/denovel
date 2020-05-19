@@ -5,10 +5,10 @@
  */
 
 export default abstract class Controller {
-	abstract index(ctx: any): any | void;
-	abstract get(ctx: any): any | void;
-	abstract post(ctx: any): any | void;
-	abstract edit(ctx: any): any | void;
-	abstract put(ctx: any): any | void;
-	abstract delete(ctx: any): any | void;
+	abstract index(ctx: any): any;
+	abstract get(ctx: any): any;
+	abstract post(ctx: any): any;
+	abstract edit(ctx: any): any;
+	abstract put(ctx: any): any;
+	abstract delete(ctx: any): any;
 }

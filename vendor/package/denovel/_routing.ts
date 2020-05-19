@@ -77,22 +77,13 @@ function routeHandler(html: boolean,url: string,path: any,method: string,returnV
         });            
     }else{
         if(method == 'get'){
-            router.get(`${url}`, async ({ params, response }: { params: any; response: any }) => {
-                returnValue({ params, response });
-            });            
+            router.get(`${url}`, returnValue);            
         }else if(method == 'post'){
-            router.post(`${url}`, async ({ request, response }: { request: any; response: any }) => {
-                const body = await request.body();
-                returnValue({ request, response, body });
-            });
+            router.post(`${url}`, returnValue);
         }else if(method == 'put'){
-            router.put(`${url}`, async ({ params,request, response }: { params: any; request: any; response: any }) => {
-                returnValue({ params,request, response });
-            });
+            router.put(`${url}`, returnValue);
         }else if(method == 'delete'){
-            router.delete(`${url}`, async ({ params,response }: { params: any; response: any }) => {
-                returnValue({ params,response })
-            })  
+            router.delete(`${url}`, returnValue)  
         }
     }    
 
@@ -109,6 +100,15 @@ app.use(router.allowedMethods());
 
 app.use((ctx) => {
   ctx.throw(404);
+});
+
+app.use(async (ctx) => {
+  const result = await ctx.request.body({
+    contentTypes: {
+      raw: ["text"],
+      text: ["application/javascript"],
+    },
+  });
 });
 
 export default app;
