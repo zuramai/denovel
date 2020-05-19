@@ -16,6 +16,7 @@ cd denovel
 ```
 
 2. **Open ```.env``` then changes by your database information (Only supports mongo yet)**
+
 ```
 PORT=8000
 BASE_URL=http://localhost:8000
@@ -40,9 +41,9 @@ deno run -A --unstable denomand.ts --name </YourControllerName>
 
 ## 💻 What to do after create a controller?
 
-### 1. Open ControllerMap.ts inside $ROOT/app to add your controller.
-### 2. Open web.ts inside $ROOT/routes to add routes to your controller.
-### 3. Then use your </YourControllerName>! ( See Home.ts inside $ROOT/app/controllers for example ).
+# 1. Open ControllerMap.ts inside $ROOT/app to add your controller.
+# 2. Open web.ts inside $ROOT/routes to add routes to your controller.
+# 3. Then use your </YourControllerName>! ( See Home.ts inside $ROOT/app/controllers for example ).
 
 
 ## 🧑 Author
